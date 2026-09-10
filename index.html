@@ -1,32 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo List</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="app">
-    <header class="header">
-      <h1>Todo List</h1>
-      <p>Добавляйте задачи и отмечайте выполненные</p>
-    </header>
-
-    <form class="add-form" id="add-form">
-      <input
-        type="text"
-        id="task-input"
-        placeholder="Новая задача..."
-        autocomplete="off"
-        required
-      >
-      <button type="submit">Добавить</button>
-    </form>
-
-    <ul class="task-list" id="task-list"></ul>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="todo_wrapper">
+        <h3 class="todayDay"></h3>
+        <p class="todayDate"></p>
+        <input type="text" class="search" placeholder="Поиск" />
+        <div class="tab-nav">
+          <button type="button" class="tab-btn is-active" data-tab="all">
+            Все
+          </button>
+          <button type="button" class="tab-btn" data-tab="active">
+            Активные
+          </button>
+          <button type="button" class="tab-btn" data-tab="finish">
+            Завершенные
+          </button>
+        </div>
+        <div class="tabs" data-current="all">
+          <div class="tab_all">
+            <ul class="task-list" id="all-task"></ul>
+          </div>
+          <div class="tab_active">
+            <ul class="task-list" id="active-task"></ul>
+          </div>
+          <div class="tab_finish">
+            <ul class="task-list" id="finish-task">
+              <li class="task done">
+                <input type="checkbox" checked />
+                <div class="task-body">
+                  <span class="task-date">10 января, 11:30</span>
+                  <span class="task-text">Покормить кошку</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="add-task" type="button" aria-label="Добавить задачу">
+        <img src="./assets/images/FAB.png" alt="" />
+      </button>
+      <div class="overlay" aria-hidden="true">
+        <div class="sheet">
+          <div class="sheet-handle"></div>
+          <input
+            id="taskDescription"
+            class="sheet-input"
+            placeholder="Описание"
+          />
+          <input id="taskDate" class="sheet-input" placeholder="Дата" />
+          <label class="remind">
+            <span>Напомнить мне</span>
+            <input type="checkbox" class="toggle" checked />
+          </label>
+          <div class="sheet-actions">
+            <button type="button" class="btn-add">Добавить</button>
+            <button type="button" class="btn-cancel">Отмена</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
